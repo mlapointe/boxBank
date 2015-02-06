@@ -28,12 +28,11 @@ class HomeController < ApplicationController
       authenticate!
     else
       access_token = session[:access_token]
+      client = Boxr::Client.new(access_token)
+      logger.info("GOT HERE")
 
-      begin
-        auth_result = RestClient.get('https://api.github.com/user',
-                                     {:params => {:access_token => access_token},
-                                      :accept => :json})
-      rescue => e
+
+      if client == nil
         # request didn't succeed because the token was revoked so we
         # invalidate the token stored in the session and render the
         # index page so that the user can start the OAuth flow again
@@ -42,12 +41,9 @@ class HomeController < ApplicationController
         return authenticate!
       end
 
-      #Request succeeded
+      #Request succeeded - Box client is valid
 
-      auth_result = JSON.parse(auth_result)
-
-
-      erb :advanced, :locals => auth_result
+      erb :apply, :locals => {:client => client}
     end
   end
 

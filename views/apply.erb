@@ -2,3 +2,18 @@
 
 
 <h1> Apply Page  </h1>
+
+<% logger.info("GOT HERE TOO") %>
+
+<% files = client.folder_items(Boxr::ROOT) %>
+
+<div class="contain" >
+
+  <ul class="file-tree">
+    <% files.each do |i| %>
+      <li><%= i.name %></li>
+    <% end %>
+  </ul>
+
+
+</div><!-- /.container -->

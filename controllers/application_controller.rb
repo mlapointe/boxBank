@@ -7,6 +7,9 @@ require 'queryparams'
 require 'rest-client'
 require 'json'
 require 'sass'
+require 'boxr'
+require "better_errors"
+
 
 class ApplicationController < Sinatra::Base
 
@@ -15,9 +18,13 @@ class ApplicationController < Sinatra::Base
   set :views, File.expand_path('../../views', __FILE__)
   enable :sessions, :method_override, :logging
 
+
+  configure :development do
+    use BetterErrors::Middleware
+    BetterErrors.application_root = __dir__
+  end
+
   register Sinatra::StaticAssets
-
-
 
   # register Sinatra::Auth
   # register Sinatra::Contact
