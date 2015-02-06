@@ -5,6 +5,7 @@ class ClientController < ApplicationController
     erb :apply
   end
 
+  
 
 
 
