@@ -9,17 +9,12 @@
   <% files = client.folder_items(Boxr::ROOT) %>
 
 
-    <ul class="file-tree">
-      <% files.each do |i| %>
 
-        <% if i.type == "folder" %>
-          <li>[<%= i.name %>]   <%= i.created_at %> </li>
-        <% else %>
-          <li><%= i.name  %>   <%= i.created_at %> </li>
-        <% end %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add File</button>
 
-      <% end %>
-    </ul>
+    <%= erb :file_picker_modal, :locals => {:files => files} %>
+
+
 
 
 </div><!-- /.container -->
