@@ -9,20 +9,27 @@ require 'json'
 require 'sass'
 require 'boxr'
 require "better_errors"
+require 'sass/plugin/rack'
+
 
 
 class ApplicationController < Sinatra::Base
 
   helpers ApplicationHelpers
 
+  set :root, File.expand_path('../../', __FILE__)
   set :views, File.expand_path('../../views', __FILE__)
-  enable :sessions, :method_override, :logging
+  enable :sessions, :method_override, :logging, :static
 
 
   configure :development do
     use BetterErrors::Middleware
     BetterErrors.application_root = __dir__
   end
+
+  # use scss for stylesheets
+  Sass::Plugin.options[:style] = :compressed
+  use Sass::Plugin::Rack
 
   register Sinatra::StaticAssets
 

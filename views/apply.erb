@@ -1,19 +1,25 @@
 <%= erb :navbar %>
 
-
-<h1> Apply Page  </h1>
-
-<% logger.info("GOT HERE TOO") %>
-
-<% files = client.folder_items(Boxr::ROOT) %>
-
 <div class="contain" >
 
-  <ul class="file-tree">
-    <% files.each do |i| %>
-      <li><%= i.name %></li>
-    <% end %>
-  </ul>
+  <h1> Upload or choose files to upload for your loan application  </h1>
+
+
+
+  <% files = client.folder_items(Boxr::ROOT) %>
+
+
+    <ul class="file-tree">
+      <% files.each do |i| %>
+
+        <% if i.type == "folder" %>
+          <li>[<%= i.name %>]   <%= i.created_at %> </li>
+        <% else %>
+          <li><%= i.name  %>   <%= i.created_at %> </li>
+        <% end %>
+
+      <% end %>
+    </ul>
 
 
 </div><!-- /.container -->

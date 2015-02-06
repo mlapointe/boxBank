@@ -29,7 +29,6 @@ class HomeController < ApplicationController
     else
       access_token = session[:access_token]
       client = Boxr::Client.new(access_token)
-      logger.info("GOT HERE")
 
 
       if client == nil
