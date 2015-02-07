@@ -10,12 +10,16 @@ require 'sass'
 require 'boxr'
 require "better_errors"
 require 'sass/plugin/rack'
+require 'sinatra/form_helpers'
+
 
 
 
 class ApplicationController < Sinatra::Base
 
   helpers ApplicationHelpers
+  helpers Sinatra::FormHelpers
+
 
   set :root, File.expand_path('../../', __FILE__)
   set :views, File.expand_path('../../views', __FILE__)

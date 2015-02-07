@@ -27,25 +27,9 @@ class HomeController < ApplicationController
     if !authenticated?
       authenticate!
     else
-      access_token = session[:access_token]
 
-      begin
-        client = Boxr::Client.new(access_token)
-      rescue Boxr::BoxrException => e
-
-        logger.info("GOT TO Exeption")
-        session[:access_token] = nil
-        return authenticate!
-      else
-        if client == nil
-          # request didn't succeed because the token was revoked so we
-          # invalidate the token stored in the session and render the
-          # index page so that the user can start the OAuth flow again
-
-          session[:access_token] = nil
-          return authenticate!
-        end
-      end
+      client = getBoxClient()
+      
 
       #Request succeeded - Box client is valid
 

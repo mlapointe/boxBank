@@ -16,7 +16,7 @@
                 <% if i.type == "folder" %>
                   <button type="button" class="file-btn btn" onclick="folderChosen()" >[<%= i.name  %>]   <%= i.created_at %></button>
                 <% else %>
-                  <button type="button" class="btn file-btn" onclick="fileChosen(<%= i.id %>)" > <%= i.name  %>   <%= i.created_at %></button>
+                  <button type="button" class="btn file-btn" onclick="fileChosen(<%= i.id %>, '<%= i.name %>')" > <%= i.name  %>   <%= i.created_at %></button>
                 <% end %>
 
               <% end %>
