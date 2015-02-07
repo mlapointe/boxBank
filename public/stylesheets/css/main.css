@@ -12,3 +12,14 @@ div.contain {
   margin-top:65px;
 
 }
+
+
+button.file-btn{
+  width: 80%;
+  text-align: left;
+  margin: 5px;
+  border: black 1px solid;
+  background-color: #89acca;
+  color: white;
+
+}

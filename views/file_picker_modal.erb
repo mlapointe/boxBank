@@ -1,4 +1,4 @@
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="filePickerModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
@@ -9,24 +9,25 @@
 
       <div class="modal-body">
 
-          <ul class="file-tree">
-            <% files.each do |i| %>
+          <div class="filepicker">
+            <ul class="file-tree">
+              <% files.each do |i| %>
 
-              <% if i.type == "folder" %>
-                <li>[<%= i.name %>]   <%= i.created_at %> </li>
-              <% else %>
-                <li><%= i.name  %>   <%= i.created_at %> </li>
+                <% if i.type == "folder" %>
+                  <button type="button" class="file-btn btn" onclick="folderChosen()" >[<%= i.name  %>]   <%= i.created_at %></button>
+                <% else %>
+                  <button type="button" class="btn file-btn" onclick="fileChosen(<%= i.id %>)" > <%= i.name  %>   <%= i.created_at %></button>
+                <% end %>
+
               <% end %>
-
-            <% end %>
-          </ul>
+            </ul>
+          </div>
 
       </div>
 
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
+      <div class="modal-footer">
+        <p> Don't see your file here? <a> Upload it to Box </a> </p>
+      </div>
 
     </div>
   </div>
