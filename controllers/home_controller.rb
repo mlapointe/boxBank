@@ -28,12 +28,8 @@ class HomeController < ApplicationController
       authenticate!
     else
 
-      client = getBoxClient()
-      
-
-      #Request succeeded - Box client is valid
-
-      erb :apply, :locals => {:client => client}
+      #Request succeeded - Box is authenticated
+      erb :apply
     end
   end
 

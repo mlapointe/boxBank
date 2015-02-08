@@ -45,7 +45,7 @@ class ClientController < ApplicationController
     user_hash = { "id" => request["bankerselect"], "type" => "user" }
     client.add_collaboration(folder, user_hash, "viewer")
 
-    erb :app_submitted
+    erb :app_submitted,  :locals => {:folder => foldername}
 
   end
 

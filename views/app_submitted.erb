@@ -1,1 +1,13 @@
-<h1> Done! </h1>
+<%= erb :navbar %>
+
+<div class="contain" >
+
+
+  <h1> Application Submitted Successfully </h1>
+
+
+  <p> Your loan application documents have been stored in the folder "<%= folder %>" in your Box account"</p>
+
+  <p> You loan officer will be in touch shortly. Until then check the status of your application <%= link_to('here', '/') %> </p>
+
+</div>

@@ -5,7 +5,7 @@
   <h1> Upload or choose files to upload for your loan application  </h1>
 
 
-
+  <% client = getBoxClient() %>
   <% files = client.folder_items(Boxr::ROOT) %>
 
     <form action="/apply/submit" method="post">
