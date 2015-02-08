@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/mlapointe/boxr.git
+  revision: 899ebf5e927ade0cc35ae393618f4772df037b63
+  branch: updatefilesbugfix
+  specs:
+    boxr (0.8.0)
+      hashie (~> 3.3)
+      httpclient (~> 2.5)
+      oj (~> 2.11)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -8,10 +18,6 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    boxr (0.8.0)
-      hashie (~> 3.3)
-      httpclient (~> 2.5)
-      oj (~> 2.11)
     coderay (1.1.0)
     debug_inspector (0.0.2)
     erubis (2.7.0)
@@ -48,7 +54,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  boxr
+  boxr!
   json
   queryparams (~> 0.0.3)
   rest-client
