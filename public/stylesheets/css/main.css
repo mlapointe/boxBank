@@ -18,6 +18,10 @@ div.contain {
 
 }
 
+h1.form {
+  text-align: center;
+}
+
 div.apply-form {
   width:90%;
   margin:auto;
