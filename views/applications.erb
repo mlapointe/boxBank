@@ -1,0 +1,19 @@
+<%= erb :navbar %>
+
+<div class="contain" >
+
+
+  <h1> Current Applications</h1>
+  <% if apps == nil %>
+    <p> You have no previous applications -- click below to submit one. </p>
+  <% else %>
+    <ul>
+      <% for app in apps %>
+        <li><%= app.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to("Submit New Application", '/apply') %>
+
+</div>

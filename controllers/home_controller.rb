@@ -28,8 +28,25 @@ class HomeController < ApplicationController
       authenticate!
     else
 
+       client = getBoxClient()
+
+      topfoldername = "BankOfAmerica-Loans"
+      begin
+        topfolder = client.folder_from_path(topfoldername)
+      rescue Boxr::BoxrException => e
+        topfolder = nil
+
+        logger.info("Boxr Exception - no folder: " + e.boxr_message)
+      end
+
+      applications = nil
+      if topfolder != nil
+        applications =  client.folder_items(topfolder.id)
+      end
+
+
       #Request succeeded - Box is authenticated
-      erb :apply
+      erb :applications, :locals => {:apps => applications}
     end
   end
 
