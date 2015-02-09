@@ -11,15 +11,7 @@
 
           <div class="filepicker">
             <ul class="file-tree" id="modal_file_ul">
-              <% files.each do |i| %>
-
-                <% if i.type == "folder" %>
-                  <button type="button" class="file-btn btn" onclick="folderChosen(<%= i.id %>)" >[<%= i.name  %>]   <%= i.created_at %></button>
-                <% else %>
-                  <button type="button" class="btn file-btn" onclick="fileChosen(<%= i.id %>, '<%= i.name %>')" > <%= i.name  %>   <%= i.created_at %></button>
-                <% end %>
-
-              <% end %>
+              <!-- Added via js & ajax -->
             </ul>
           </div>
 

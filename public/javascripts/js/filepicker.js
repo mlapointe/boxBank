@@ -1,4 +1,13 @@
 
+
+window.onload = function() {
+  root_file_tree = folderChosen(0)
+}
+
+$('#filePickerModal').on('hidden.bs.modal', function (e) {
+  folderChosen(0)
+})
+
 function fileChosen(file_id, file_name){
 
 
