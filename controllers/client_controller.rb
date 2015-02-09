@@ -28,8 +28,23 @@ class ClientController < ApplicationController
 
     #Create Shared Folder
     time = Time.now
+
+    topfoldername = "BankOfAmerica-Loans"
+    begin
+      topfolder = client.folder_from_path(topfoldername)
+    rescue Boxr::BoxrException => e
+
+      logger.info("Boxr Exception - no folder: " + e.boxr_message)
+      logger.info("Creating new folder:" + topfoldername)
+
+      topfolder = client.create_folder(topfoldername, Boxr::ROOT)
+
+    end
+
     foldername = "BofA-LoanApp-"+time.strftime("%Y%m%d-%H:%M")
-    folder = client.create_folder(foldername,Boxr::ROOT)
+    folder = client.create_folder(foldername, topfolder.id)
+
+
 
     #Add specified files
     for file_id in request["file_ids"] do
