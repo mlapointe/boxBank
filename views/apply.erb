@@ -8,6 +8,7 @@
   <% client = getBoxClient() %>
   <% files = client.folder_items(Boxr::ROOT) %>
 
+  <div class=apply-form>
     <form action="/apply/submit" method="post">
       <label for="name">Name:</label>
       <input type="text" name="name">
@@ -17,22 +18,25 @@
      <!-- :regexp => %r{[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@
   (?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?}  -->
 
-      <label for="bankerselect">Banker:</label>
+  <label for="bankerselect">Banker:</label>
       <select name="bankerselect">
         <option value="232125343" selected>Mike Lapointe</option>
         <option value="marvin">Marvin</option>
         <option value="jen">Jen</option>
       </select>
 
+      <br />
+      <label for="file_list">Files:</label>
+
       <ul id="file_list">
 
       </ul>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add File</button>
+      <button type="button" class="btn" data-toggle="modal" data-target=".bs-example-modal-lg">Add File</button>
 
 
-      <input type="submit" value="Apply">
-    </forrm>
-
+      <input type="submit" class="btn btn-primary" value="Apply">
+    </form>
+  </div>
 
     <%= erb :file_picker_modal, :locals => {:files => files} %>
 

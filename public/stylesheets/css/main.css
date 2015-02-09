@@ -7,12 +7,32 @@ div.navbar li {
   color:white;
 }
 
+.navbar-nav {
+  float: right;
+  font-size: 20px;
+}
+
 div.contain {
 
   margin-top:65px;
 
 }
 
+div.apply-form {
+  width:90%;
+  margin:auto;
+}
+
+.apply-form input{
+  display:block;
+  width:100%;
+}
+
+.apply-form button{
+
+  margin:20px auto;
+
+}
 
 button.file-btn{
   width: 80%;
@@ -22,4 +42,10 @@ button.file-btn{
   background-color: #89acca;
   color: white;
 
+}
+
+@media (min-width:768px){
+  div.apply-form{
+    width:40%;
+  }
 }

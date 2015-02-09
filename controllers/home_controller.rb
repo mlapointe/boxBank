@@ -36,7 +36,7 @@ class HomeController < ApplicationController
       rescue Boxr::BoxrException => e
         topfolder = nil
 
-        logger.info("Boxr Exception - no folder: " + e.boxr_message)
+        #logger.info("Boxr Exception - no folder: " + e.boxr_message)
       end
 
       applications = nil
