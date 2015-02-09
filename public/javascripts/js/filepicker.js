@@ -1,5 +1,4 @@
 
-
 function fileChosen(file_id, file_name){
 
 
@@ -11,11 +10,38 @@ function fileChosen(file_id, file_name){
 
 }
 
-function folderChosen(folder_id){
+function folderChosen(id){
 
-  //TODO:
-  //Reload picker w/ folder contents via API using YQL
-  //http://developers.blog.box.com/2011/09/28/using-the-box-api-with-javascript/
+    $.ajax({url: "apply/ajax-getfolder",
+        type: 'POST',
+        data: {folder_id: id},
+        success: function(data, status, xhr) {
+          info = JSON.parse(data)
+
+          console.log(info)
+          $('#modal_file_ul').empty()
+
+
+          for ( i in info){
+            x = info[i]
+            if (x.type === 'file'){
+              $('#modal_file_ul').append('<button type="button" class="btn file-btn" onclick="fileChosen('+x.id+',\''+x.name+'\')">'+x.name+'</button>');
+              console.log("file")
+            }else if (x.type === 'folder'){
+              $('#modal_file_ul').append('<button type="button" class="btn file-btn" onclick="folderChosen('+x.id+')">['+x.name+']</button>');
+              console.log("folder")
+
+            }
+
+          }
+
+
+        }, error: function(request, textStatus, errorThrown) {
+            console.log("error"+request+textStatus)
+
+        }
+      });
+
 
 }
 

@@ -56,6 +56,20 @@ class ClientController < ApplicationController
 
   end
 
+
+  post '/ajax-getfolder' do
+
+    folder_id = request['folder_id']
+
+    client = getBoxClient()
+    items = client.folder_items(folder_id)
+
+    logger.info(items)
+
+    return items.to_json
+
+  end
+
   post '/upload' do
 
    data = request['data']
