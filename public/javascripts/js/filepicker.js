@@ -65,7 +65,7 @@ $("#upload_file_form").submit(function(e){
 
   $('.modal-upload').css("display", "hidden")
 
-  $("#upload_link").html("Uploading...")
+  // $("#upload_link").html("Uploading...")
 
 
   $.each(files_to_upload, function(index, file) {
@@ -76,40 +76,22 @@ $("#upload_file_form").submit(function(e){
           type: 'POST',
           data: {filename: file.filename, data: file.data},
           success: function(data, status, xhr) {
+            info = JSON.parse(data)
+
+            fileChosen(info.file_id, info.file_name)
+            $('.modal-upload').css("display", "hidden")
 
 
-
+          }, error: function(request, textStatus, errorThrown) {
+              console.log("error"+request+textStatus)
+              $('#filePickerModal').modal('hide')
           }
         });
   });
   files = [];
 
-  $('#filePickerModal').modal('hide')
+
 
 
 
 });
-
-
-
-$("form").submit(function(form) {
-  $.each(files, function(index, file) {
-    $.ajax({url: "/ajax-upload",
-          type: 'POST',
-          data: {filename: file.filename, data: file.data},
-          success: function(data, status, xhr) {}
-    });
-  });
-  files = [];
-  form.preventDefault();
-});
-
-
-
-
-
-function uploadFile(path){
-
-
-
-}

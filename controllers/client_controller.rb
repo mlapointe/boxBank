@@ -73,18 +73,25 @@ class ClientController < ApplicationController
    file = Tempfile.new([filename, ext[0]])
    file.write(decoded_file)
 
-   logger.info("Writing #{file} to Box")
+   logger.info("Writing #{file.path} to Box")
 
    #upload to Box
    client = getBoxClient()
    client.upload_file(file, Boxr::ROOT)
 
+  #  box_file_name = /^\\(.+\\)*(.+)\.(.+)$/.match(file.path)
+
+   pn = Pathname.new(file.path)
+   box_file_name = pn.basename.to_s
+
+   logger.info(box_file_name)
 
    file.close
    file.unlink #Delete TempFile
 
+   box_file = client.file_from_path(box_file_name)
 
-
+   return {'file_id' => box_file.id, 'file_name' => box_file.name}.to_json
 
   end
 

@@ -13,6 +13,7 @@ require 'sass/plugin/rack'
 require 'sinatra/form_helpers'
 require 'tempfile'
 require "base64"
+require 'pathname'
 
 
 
