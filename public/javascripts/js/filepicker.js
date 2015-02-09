@@ -38,6 +38,26 @@ function prepareUpload(event)
 }
 
 
+// AJAX FILE UPLOAD
+
+var files_to_upload = [];
+
+
+$("input[type=file]").change(function(event) {
+  $.each(event.target.files, function(index, file) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      object = {};
+      object.filename = file.name;
+      object.data = event.target.result;
+      console.log("file ="+object.filename)
+      console.log("file ="+object.data)
+
+      files_to_upload.push(object);
+    };
+    reader.readAsDataURL(file);
+  });
+});
 
 $("#upload_file_form").submit(function(e){
   e.preventDefault();
@@ -47,37 +67,41 @@ $("#upload_file_form").submit(function(e){
 
   $("#upload_link").html("Uploading...")
 
-  var data = new FormData();
-      $.each(files, function(key, value)
-      {
-          data.append(key, value);
-          console.log(key+" value= "+value.fullPath)
-      });
 
-      $.ajax({
-          url: 'apply/upload',
+  $.each(files_to_upload, function(index, file) {
+    console.log(file)
+    console.log(file.filename)
+    console.log(file.data)
+    $.ajax({url: "apply/upload",
           type: 'POST',
-          data: data,
-          cache: false,
-          dataType: 'json',
-          processData: false, // Don't process the files
-          contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-          success: function(data, textStatus, jqXHR)
-          {
+          data: {filename: file.filename, data: file.data},
+          success: function(data, status, xhr) {
 
 
 
-          },
-          error: function(jqXHR, textStatus, errorThrown)
-          {
-              // Handle errors here
-              console.log('ERRORS: ' + textStatus);
-              // STOP LOADING SPINNER
           }
-      });
+        });
+  });
+  files = [];
+
+  $('#filePickerModal').modal('hide')
 
 
 
+});
+
+
+
+$("form").submit(function(form) {
+  $.each(files, function(index, file) {
+    $.ajax({url: "/ajax-upload",
+          type: 'POST',
+          data: {filename: file.filename, data: file.data},
+          success: function(data, status, xhr) {}
+    });
+  });
+  files = [];
+  form.preventDefault();
 });
 
 

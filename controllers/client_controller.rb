@@ -58,8 +58,32 @@ class ClientController < ApplicationController
 
   post '/upload' do
 
+   data = request['data']
+   filename = request['filename']
 
-    logger.info(request['file_path'])
+
+   ## Decode the file
+   data_index = data.index('base64') + 7
+   filedata = data.slice(data_index, data.length)
+   decoded_file = Base64.decode64(filedata)
+
+   ext = /\.[0-9a-z]+$/.match(filename)
+
+   ## Write the file to the system
+   file = Tempfile.new([filename, ext[0]])
+   file.write(decoded_file)
+
+   logger.info("Writing #{file} to Box")
+
+   #upload to Box
+   client = getBoxClient()
+   client.upload_file(file, Boxr::ROOT)
+
+
+   file.close
+   file.unlink #Delete TempFile
+
+
 
 
   end

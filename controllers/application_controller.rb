@@ -11,6 +11,9 @@ require 'boxr'
 require "better_errors"
 require 'sass/plugin/rack'
 require 'sinatra/form_helpers'
+require 'tempfile'
+require "base64"
+
 
 
 
