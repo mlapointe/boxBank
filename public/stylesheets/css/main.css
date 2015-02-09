@@ -44,6 +44,11 @@ button.file-btn{
 
 }
 
+div.modal-upload{
+  display:none;
+
+}
+
 @media (min-width:768px){
   div.apply-form{
     width:40%;

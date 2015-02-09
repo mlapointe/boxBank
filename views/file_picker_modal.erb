@@ -26,7 +26,13 @@
       </div>
 
       <div class="modal-footer">
-        <p> Don't see your file here? <a> Upload it to Box </a> </p>
+        <p> Don't see your file here? <button id="upload_link" onclick="showUpload()"> Upload it to Box </a> </p>
+        <div class="modal-upload">
+          <form accept-charset="UTF-8" action="apply/upload" class="new_article" data-remote="true" id="upload_file_form" method="post">
+            <input type="file" name="files[]" id="file_select" multiple/>
+            <input type="submit" value="Upload" id="upload_file_submit">
+          </form>
+        </div>
       </div>
 
     </div>

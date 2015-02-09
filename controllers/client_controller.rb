@@ -17,14 +17,6 @@ class ClientController < ApplicationController
       logger.info("client is nil")
     end
 
-    # logger.info(request["name"])
-    # logger.info(request["email"])
-    # logger.info(request["bankerselect"])
-    # for id in request["file_ids"] do
-    #   logger.info(id)
-    # end
-    #
-    # logger.info(request["file_ids"][1])
 
     #Create Shared Folder
     time = Time.now
@@ -61,6 +53,14 @@ class ClientController < ApplicationController
     client.add_collaboration(folder, user_hash, "viewer")
 
     erb :app_submitted,  :locals => {:folder => foldername}
+
+  end
+
+  post '/upload' do
+
+
+    logger.info(request['file_path'])
+
 
   end
 
