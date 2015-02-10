@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
     access_token_params = {
       response_type: 'code',
-      client_id: 'dnm2os2fyxu0ex7kke6kosfga4vwrczl',
+      client_id: ENV['BOX_CLIENT_ID'],
       redirect_uri: 'http://localhost:9292/oauthcallback',
       state: 'test'
     }
@@ -24,6 +24,9 @@ class HomeController < ApplicationController
 
 
   get '/' do
+
+
+
     if !authenticated?
       authenticate!
     else
@@ -65,8 +68,8 @@ class HomeController < ApplicationController
 
     get_token_params = {
       code: code,
-      client_id: 'dnm2os2fyxu0ex7kke6kosfga4vwrczl',
-      client_secret: 'qYYu6XllZVHZUNaYF7eKcqdO6rHVD7v6',
+      client_id: ENV['BOX_CLIENT_ID'],
+      client_secret: ENV['BOX_CLIENT_SECRET'],
       grant_type: 'authorization_code'
     }
 
