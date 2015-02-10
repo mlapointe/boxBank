@@ -2,19 +2,33 @@
 
 <div class="contain" >
 
-  <h1><a href="/"><</a> Review Application </h1>
+  <div class="left_review_pane">
+    <h1><a href="/"><</a> Review Application </h1>
 
-  <h2> <%= name %> </h2>
+    <h2> <%= name %> </h2>
 
-  <p> Files Submitted </p>
-  <ul>
-    <% for i in items %>
-      <%  query_params = {
-            folder_id: i.id,
-            folder_name: i.name
-        } %>
-        <li><a href="/review/file?<%=QueryParams.encode(query_params) %>"><%= i.name %></a></li>
-    <% end %>
-  </ul>
+    <p> Files Submitted </p>
+    <ul>
+      <% items.zip(dl_links).each do |i, dl| %>
+          <li><a href="<%=dl%>" ><%= i.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="right_review_pane">
+
+    <div class="viewer">
+    </div>
+
+
+
+
+  </div>
+
+
 
 </div>
+
+<!-- <link href="/stylesheets/css/crocodoc.viewer.min.css" rel="stylesheet">
+<script src='/javascripts/js/crocodoc.viewer.min.js'></script> -->
+<script src="/javascripts/js/review.js"></script>

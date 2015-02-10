@@ -26,7 +26,6 @@ class HomeController < ApplicationController
   get '/' do
 
 
-
     if !authenticated?
       authenticate!
     else
@@ -75,8 +74,6 @@ class HomeController < ApplicationController
 
 
     RestClient.post('https://app.box.com/api/oauth2/token', get_token_params ){ |response, request, result, &block|
-
-      logger.info(request)
 
       logger.info("string = " + response.body)
       res = JSON.parse(response.body)

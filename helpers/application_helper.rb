@@ -12,9 +12,10 @@ module ApplicationHelpers
   def getBoxClient()
 
     access_token = session[:access_token]
+    refresh_token = session[:refresh_token]
 
     begin
-      client = Boxr::Client.new(access_token)
+      client = Boxr::Client.new(access_token, refresh_token: refresh_token)
     rescue Boxr::BoxrException => e
 
       logger.info("GOT TO Exeption")
