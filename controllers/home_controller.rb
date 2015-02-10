@@ -70,7 +70,10 @@ class HomeController < ApplicationController
       grant_type: 'authorization_code'
     }
 
-    RestClient.post('https://api.box.com/oauth2/token', get_token_params ){ |response, request, result, &block|
+
+    RestClient.post('https://app.box.com/api/oauth2/token', get_token_params ){ |response, request, result, &block|
+
+      logger.info(request)
 
       logger.info("string = " + response.body)
       res = JSON.parse(response.body)
@@ -85,9 +88,9 @@ class HomeController < ApplicationController
   end
 
 
-  get '/' do
-    erb :index
+  get '/logout' do
+    session[:access_token] = nil
+    redirect '/'
   end
-
 
 end

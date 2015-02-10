@@ -16,9 +16,6 @@ require "base64"
 require 'pathname'
 
 
-
-
-
 class ApplicationController < Sinatra::Base
 
   helpers ApplicationHelpers

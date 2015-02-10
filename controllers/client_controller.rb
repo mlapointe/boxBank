@@ -48,7 +48,6 @@ class ClientController < ApplicationController
 
 
     #Add Shared collab permissions w/ bankerselect ID
-    #banker = client.user_from_id(request["bankerselect"])
     user_hash = { "id" => request["bankerselect"], "type" => "user" }
     client.add_collaboration(folder, user_hash, "viewer")
 

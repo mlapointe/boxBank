@@ -4,10 +4,6 @@
 
   <h1 class="form"> Upload or choose files to upload for your loan application </h1>
 
-
-  <% client = getBoxClient() %>
-  <% files = client.folder_items(Boxr::ROOT) %>
-
   <div class=apply-form>
     <form action="/apply/submit" method="post">
       <label for="name">Name:</label>
@@ -36,7 +32,7 @@
     </form>
   </div>
 
-    <%= erb :file_picker_modal, :locals => {:files => files} %>
+    <%= erb :file_picker_modal %>
 
 
 
