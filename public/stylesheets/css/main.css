@@ -52,6 +52,16 @@ button.file-btn{
 
 }
 
+button.accept{
+  background-image: linear-gradient(to bottom, #35CB37 0%, #489E60 100%);
+  color:white;
+}
+
+button.reject{
+  background-image: linear-gradient(to bottom, #E40A0A 0%, #C84E4E 100%);
+  color:white;
+}
+
 div.modal-upload{
   display:none;
 
