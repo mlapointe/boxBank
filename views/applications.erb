@@ -7,18 +7,18 @@
   <% if apps == nil %>
     <p> You have no previous applications -- click below to submit one. </p>
   <% else %>
-    <ul>
+    <ul style="list-style-type: none">
       <% for app in apps %>
       <%  query_params = {
             folder_id: app.id,
             folder_name: app.name
         } %>
-        <li><a href="/review?<%=QueryParams.encode(query_params) %>"><%= app.name %></a></li>
+        <li><a href="/review?<%=QueryParams.encode(query_params) %>"><button class="application-btn"><%= app.name %></button></a></li>
       <% end %>
     </ul>
   <% end %>
 
-  <a href="/apply" class="btn btn-primary">Submit New Application</a>
+  <a href="/apply" class="btn btn-primary" style="margin-left:15px">Submit New Application</a>
 
 
 </div>
