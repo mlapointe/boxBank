@@ -1,13 +1,4 @@
 module ApplicationHelpers
-  # def css(*stylesheets)
-  #     stylesheets.map do |stylesheet|
-  #       "<link href="/#{stylesheet}.css" media="screen, projection" rel="stylesheet" />"
-  #   end.join
-  # end
-
- # def current?(path='/')
- #   request.path_info==path ? "current": nil
- # end
 
   def getBoxClient()
 
@@ -34,4 +25,17 @@ module ApplicationHelpers
 
     return client
   end
+
+  ## Insecure! -- For demo purposes only
+  def isAdmin?
+    if session[:admin] == 'admin'
+      return true
+    elsif session[:admin] == 'client'
+      return false
+    else
+      return false
+    end
+
+  end
+
 end

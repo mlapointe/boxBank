@@ -39,6 +39,13 @@ class HomeController < ApplicationController
 
     code = params[:code]
     state = params[:state]
+    logger.info("State = "+state)
+    if state == "admin"
+      logger.info("Admin logged in")
+      session[:admin] = "admin"
+    else
+      session[:admin] = "client"
+    end
 
     logger.info("code = " + code)
 
@@ -71,6 +78,9 @@ class HomeController < ApplicationController
 
   get '/logout' do
     session[:access_token] = nil
+    session[:refresh_token] = nil
+    session[:admin] = nil
+
     redirect '/'
   end
 

@@ -57,15 +57,26 @@ class ApplicationController < Sinatra::Base
 
   def authenticate!
 
+    # Auth for Client
     access_token_params = {
       response_type: 'code',
       client_id: ENV['BOX_CLIENT_ID'],
       redirect_uri: 'http://localhost:9292/oauthcallback',
-      state: 'test'
+      state: 'client'
     }
 
     auth_url = 'https://app.box.com/api/oauth2/authorize?' + QueryParams.encode(access_token_params)
 
-    erb :index, :locals => {:auth_url => auth_url}
+    # Auth for Employee -- NOTE: THIS IS NOT A SECURE METHOD, using 'state' param is just for demo purposes
+    admin_access_token_params = {
+      response_type: 'code',
+      client_id: ENV['BOX_CLIENT_ID'],
+      redirect_uri: 'http://localhost:9292/oauthcallback',
+      state: 'admin'
+    }
+
+    admin_auth_url = 'https://app.box.com/api/oauth2/authorize?' + QueryParams.encode(admin_access_token_params)
+
+    erb :index, :locals => {:auth_url => auth_url, :admin_auth_url => admin_auth_url}
   end
 end

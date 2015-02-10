@@ -3,9 +3,18 @@
 <div class="contain" >
 
 
-  <h1> Current Applications</h1>
+  <% if isAdmin? %>
+     <h1> Select and Application to Review </h1>
+  <% else %>
+     <h1> Current Applications</h1>
+  <% end %>
+
   <% if apps == nil %>
-    <p> You have no previous applications -- click below to submit one. </p>
+    <% if isAdmin? %>
+      <p> No one has submitted an application to you. </p>
+    <% else %>
+      <p> You have no previous applications -- click below to submit one. </p>
+    <% end %>
   <% else %>
     <ul style="list-style-type: none">
       <% for app in apps %>
@@ -18,7 +27,9 @@
     </ul>
   <% end %>
 
-  <a href="/apply" class="btn btn-primary" style="margin-left:15px">Submit New Application</a>
+  <% if !isAdmin? %>
+    <a href="/apply" class="btn btn-primary" style="margin-left:15px">Submit New Application</a>
+  <% end %>
 
 
 </div>

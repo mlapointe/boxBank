@@ -15,8 +15,10 @@
       <% end %>
     </ul>
 
-    <button class="btn accept" onClick="acceptApplication()">Accept</button>
-    <button class="btn reject" onClick="acceptApplication()">Reject</button>
+    <% if isAdmin? %>
+      <button class="btn accept" onClick="acceptApplication()">Accept</button>
+      <button class="btn reject" onClick="acceptApplication()">Reject</button>
+    <% end %>
 
 
   </div>
