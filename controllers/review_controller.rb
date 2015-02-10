@@ -2,22 +2,25 @@ class ReviewController < ApplicationController
 
 
   get '/' do
-    folder_id = request['folder_id']
-    name = request['folder_name']
 
-    client = getBoxClient()
-    items = client.folder_items(folder_id)
-    collabs = client.folder_collaborations(folder_id)
-    dl_links = []
+    if !authenticated?
+      authenticate!
+    else
+      folder_id = request['folder_id']
+      name = request['folder_name']
 
-    for file in items
-      file_dl = client.download_file(file.id, follow_redirect: false)
-      dl_links.push(file_dl)
+      client = getBoxClient()
+      items = client.folder_items(folder_id)
+      collabs = client.folder_collaborations(folder_id)
+      dl_links = []
+
+      for file in items
+        file_dl = client.download_file(file.id, follow_redirect: false)
+        dl_links.push(file_dl)
+      end
+
+      erb :review_application, :locals => {items: items, collabs: collabs, name: name, dl_links: dl_links}
     end
-
-
-    erb :review_application, :locals => {items: items, collabs: collabs, name: name, dl_links: dl_links}
-
   end
 
 

@@ -49,4 +49,23 @@ class ApplicationController < Sinatra::Base
   #use AssetHandler
 
   # not_found{ slim :not_found }
+
+  def authenticated?
+    session[:access_token]
+  end
+
+
+  def authenticate!
+
+    access_token_params = {
+      response_type: 'code',
+      client_id: ENV['BOX_CLIENT_ID'],
+      redirect_uri: 'http://localhost:9292/oauthcallback',
+      state: 'test'
+    }
+
+    auth_url = 'https://app.box.com/api/oauth2/authorize?' + QueryParams.encode(access_token_params)
+
+    erb :index, :locals => {:auth_url => auth_url}
+  end
 end

@@ -2,7 +2,12 @@ class ClientController < ApplicationController
   #helpers WebsiteHelpers
 
   get '/' do
-    erb :apply
+
+    if !authenticated?
+      authenticate!
+    else
+      erb :apply
+    end
   end
 
   post '/submit' do
@@ -41,7 +46,7 @@ class ClientController < ApplicationController
     #Add specified files
     for file_id in request["file_ids"] do
       file = client.file_from_id(file_id)
-      client.update_file(file, parent_id: folder.id)
+      client.update_file(file, parent: folder.id)
 
       logger.info("Added file with ID #{file_id} to folder #{folder.id}")
     end
