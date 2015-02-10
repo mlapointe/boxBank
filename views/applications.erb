@@ -9,7 +9,11 @@
   <% else %>
     <ul>
       <% for app in apps %>
-        <li><%= app.name %></li>
+      <%  query_params = {
+            folder_id: app.id,
+            folder_name: app.name
+        } %>
+        <li><a href="/review?<%=QueryParams.encode(query_params) %>"><%= app.name %></a></li>
       <% end %>
     </ul>
   <% end %>
