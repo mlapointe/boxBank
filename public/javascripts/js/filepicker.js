@@ -6,6 +6,7 @@ window.onload = function() {
 
 $('#filePickerModal').on('hidden.bs.modal', function (e) {
   folderChosen(0)
+  resetFileWindow()
 })
 
 function fileChosen(file_id, file_name){
@@ -98,9 +99,9 @@ $("#upload_file_form").submit(function(e){
   e.preventDefault();
   console.log("Submit pressed")
 
-  $('.modal-upload').css("display", "hidden")
+  $('#modal-upload').css("display", "none")
 
-  // $("#upload_link").html("Uploading...")
+  $("#upload_link").text("Uploading...")
 
 
   $.each(files_to_upload, function(index, file) {
@@ -114,7 +115,6 @@ $("#upload_file_form").submit(function(e){
             info = JSON.parse(data)
 
             fileChosen(info.file_id, info.file_name)
-            $('.modal-upload').css("display", "hidden")
 
 
           }, error: function(request, textStatus, errorThrown) {
@@ -126,7 +126,13 @@ $("#upload_file_form").submit(function(e){
   files = [];
 
 
-
-
-
 });
+
+
+function resetFileWindow(){
+  $('#modal-upload').css("display", "none")
+  $("#upload_link").html("Upload it to Box")
+
+
+
+}
