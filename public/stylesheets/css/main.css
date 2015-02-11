@@ -58,6 +58,19 @@ button.file-btn{
 
 }
 
+button.folder-btn{
+
+  width: 80%;
+  text-align: left;
+  margin: 5px;
+  border: rgb(2, 86, 166) 1px solid;
+  background-color: rgba(239, 237, 230, 0.82);
+  color: rgb(148, 148, 143);
+  border-radius: 10px;
+  display: block;
+
+}
+
 button.application-btn{
   width: 300px;
   text-align: left;
@@ -84,6 +97,16 @@ button.reject{
 div.modal-upload{
   display:none;
 
+}
+
+.application a, .application p{
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.application p{
+  margin-left:20px;
+  margin-bottom:0;
 }
 
 @media (min-width:768px){

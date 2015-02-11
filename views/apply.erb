@@ -7,15 +7,15 @@
   <div class=apply-form>
     <form action="/apply/submit" method="post">
       <label for="name">Name:</label>
-      <input type="text" name="name">
+      <input type="text" name="name" required>
 
       <label for="email">Email:</label>
-      <input type="email" name="email">
+      <input type="email" name="email" required>
      <!-- :regexp => %r{[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@
   (?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?}  -->
 
   <label for="bankerselect">Banker:</label>
-      <select name="bankerselect">
+      <select name="bankerselect" >
         <option value="232125343" selected>Mike Lapointe</option>
       </select>
 

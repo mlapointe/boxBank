@@ -11,7 +11,7 @@
     <p> <strong> Files Submitted </strong> - Choose file below to view/comment </p>
     <ul>
       <% items.zip(dl_links).each do |i, dl| %>
-          <li><a href="<%=dl%>" onclick="confirmDownload()" ><%= i.name %></a></li>
+          <li><a href="<%=dl%>" onclick="return confirmDownload()" ><%= i.name %></a></li>
       <% end %>
     </ul>
 

@@ -37,7 +37,7 @@ function folderChosen(id){
               $('#modal_file_ul').append('<button type="button" class="btn file-btn" onclick="fileChosen('+x.id+',\''+x.name+'\')">'+x.name+'</button>');
               console.log("file")
             }else if (x.type === 'folder'){
-              $('#modal_file_ul').append('<button type="button" class="btn file-btn" onclick="folderChosen('+x.id+')">'+x.name+'/</button>');
+              $('#modal_file_ul').append('<button type="button" class="btn folder-btn" onclick="folderChosen('+x.id+')">'+x.name+'/</button>');
               console.log("folder")
 
             }

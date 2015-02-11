@@ -22,7 +22,7 @@
             folder_id: app.id,
             folder_name: app.name
         } %>
-        <li><a href="/review?<%=QueryParams.encode(query_params) %>"><button class="application-btn"><%= app.name %></button></a></li>
+        <li class="application"><a href="/review?<%=QueryParams.encode(query_params) %>"><button class="application-btn"><%= app.name %></button></a>  <p>Status: <strong style="color:red"> Pending Approval </strong></p></li>
       <% end %>
     </ul>
   <% end %>

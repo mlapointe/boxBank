@@ -1,7 +1,7 @@
 
 function confirmDownload(){
 
-  return confirm('Final view would reload viewer on this page. \n (see source for example code) \n Would you like to download file instead?')
+  return confirm('Final application would use ajax to reload Box viewer on this page. \n (see source for example code) \n Would you like to download file instead?')
 }
 
 function addComment(){
