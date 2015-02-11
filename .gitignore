@@ -48,4 +48,5 @@ build/
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 
-.env
+#Ignore .env file for production -- allowed here for easy cloning & run
+#.env
